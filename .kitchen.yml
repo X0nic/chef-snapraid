@@ -6,12 +6,12 @@ provisioner:
   name: chef_solo
 
 platforms:
-  - name: ubuntu-13.10
-  - name: ubuntu-13.04
   - name: ubuntu-12.04
+  - name: ubuntu-14.04
 
 suites:
   - name: default
     run_list:
+      - recipe[apt::default]
       - recipe[snapraid::default]
     attributes:
