@@ -2,6 +2,6 @@ AllCops:
   Exclude:
     - '**/metadata.rb'
     - 'tmp/**/*'
-    - 'vendor/**'
+    - 'vendor/**/*'
 Metrics/LineLength:
   Max: 120

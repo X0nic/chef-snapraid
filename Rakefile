@@ -20,7 +20,6 @@ task :foodcritic do
     prepare_foodcritic_sandbox(sandbox)
     puts 'Running foodcritic...'
     sh "foodcritic -f any #{File.dirname(sandbox)}"
-    puts "\n\n"
   else
     puts "WARN: foodcritic run is skipped as Ruby #{RUBY_VERSION} is < 1.9.2."
   end
@@ -35,4 +34,5 @@ def prepare_foodcritic_sandbox(sandbox)
   rm_rf sandbox
   mkdir_p sandbox
   cp_r Dir.glob("{#{files.join(',')}}"), sandbox
+  puts "\n\n"
 end
