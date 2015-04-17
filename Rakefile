@@ -1,10 +1,7 @@
 #!/usr/bin/env rake
 require 'rubocop'
 desc 'Run tests and rubocop'
-task :default do
-  Rake::Task['rubocop'].invoke
-  Rake::Task['foodcritic'].invoke
-end
+task default: [:rubocop, :foodcritic]
 
 task :rubocop do
   require 'rubocop'

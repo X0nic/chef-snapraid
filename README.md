@@ -1,18 +1,19 @@
-# SnapRAID cookbook
+# SnapRAID cookbook [![Cookbook Version](http://img.shields.io/cookbook/v/snapraid.svg)](https://supermarket.chef.io/cookbooks/snapraid) [![Build Status](https://travis-ci.org/X0nic/chef-snapraid.svg)](https://travis-ci.org/X0nic/chef-snapraid)
 This cookbook provides a default recipe to install and configure SnapRAID
 
 # Requirements
-
 ## Operating Systems
+**Ubuntu:** 12.04, 14.04  
+**CentOS:** 6.6, 7.0
 
 ## Misc
  * Network access to SourceForge
 # Usage
-Add the SnapRAID cookbook to your runlist, specify the `data_disks`, `parity_disks`, and `content_files` in accordance with the disks you wish to control with SnapRAID.   
+Add the SnapRAID cookbook to your runlist, and set the `data_disks`, `parity_disks`, and `content_files` attributes in accordance with the desired SnapRAID configuration.   
 See the [SnapRAID FAQ](http://snapraid.sourceforge.net/faq.html) for more details.
 
 # Attributes
-#### transmission::default
+#### snapraid::default
 <table>
   <tr>
     <th>Key</th>
