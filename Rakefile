@@ -1,14 +1,11 @@
 #!/usr/bin/env rake
-require 'rubocop'
+
 desc 'Run tests and rubocop'
 task default: [:rubocop, :foodcritic]
 
 task :rubocop do
-  require 'rubocop'
-  puts 'Running RuboCop...'
-  cli = RuboCop::CLI.new
-  cli.run(%w(--fail-level R))
-  puts "\n\n"
+  require 'rubocop/rake_task'
+  RuboCop::RakeTask.new
 end
 
 task :foodcritic do
