@@ -8,6 +8,10 @@ This cookbook provides a default recipe to install and configure SnapRAID
 
 ## Misc
  * Network access to SourceForge
+ * Network access to GitHub
+
+## Packages
+ * python
 # Usage
 Add the SnapRAID cookbook to your runlist, and set the `data_disks`, `parity_disks`, and `content_files` attributes in accordance with the desired SnapRAID configuration.   
 See the [SnapRAID FAQ](http://snapraid.sourceforge.net/faq.html) for more details.
@@ -81,6 +85,99 @@ default_attributes(
     <td>SHA-256 hash of SnapRAID tar.gz</td>
     <td><tt>false</tt></td>
   </tr>
+</table>
+#### snapraid::scheduler
+<table>
+  <tr>
+  <td><tt>['snapraid']['scheduler']['script_url']</tt></td>
+  <td>string</td>
+  <td>url to snapraid_runner</td>
+  <td><tt>false</tt></td>
+</tr>
+<tr>
+  <td><tt>['snapraid']['scheduler']['script_directory']</tt></td>
+  <td>string</td>
+  <td>directory in which to place snapraid_runner.py</td>
+  <td><tt>false</tt></td>
+</tr>
+<tr>
+  <td><tt>['snapraid']['scheduler']['config_file']</tt></td>
+  <td>string</td>
+  <td>filepath to snapraid_runner.conf</td>
+  <td><tt>false</tt></td>
+</tr>
+<tr>
+  <td><tt>['snapraid']['scheduler']['execution_hour']</tt></td>
+  <td>string</td>
+  <td>hour of the day to execute snapraid_runner (cron)</td>
+  <td><tt>false</tt></td>
+</tr>
+<tr>
+  <td><tt>['snapraid']['scheduler']['execution_minute']</tt></td>
+  <td>string</td>
+  <td>minute of the day to execute snapraid_runner (cron)</td>
+  <td><tt>false</tt></td>
+</tr>
+<tr>
+  <td><tt>['snapraid']['scheduler']['email_from']</tt></td>
+  <td>string</td>
+  <td>email address snapraid_runner will impersonate when sending status emails</td>
+  <td><tt>false</tt></td>
+</tr>
+<tr>
+  <td><tt>['snapraid']['scheduler']['email_to']</tt></td>
+  <td>string</td>
+  <td>email address snapraid_runner will notify when sending status emails</td>
+  <td><tt>false</tt></td>
+</tr>
+<tr>
+  <td><tt>['snapraid']['scheduler']['smtp_host']</tt></td>
+  <td>string</td>
+  <td>smtp host snapraid_runner will use</td>
+  <td><tt>false</tt></td>
+</tr>
+<tr>
+  <td><tt>['snapraid']['scheduler']['smtp_port']</tt></td>
+  <td>string</td>
+  <td>smtp port snapraid_runner will use</td>
+  <td><tt>false</tt></td>
+</tr>
+<tr>
+  <td><tt>['snapraid']['scheduler']['smtp_ssl']</tt></td>
+  <td>boolean</td>
+  <td>whether snapraid_runner will use ssl for emails</td>
+  <td><tt>false</tt></td>
+</tr>
+<tr>
+  <td><tt>['snapraid']['scheduler']['smtp_user']</tt></td>
+  <td>string</td>
+  <td>optional username for snapraid_runner to login to smtp server</td>
+  <td><tt>false</tt></td>
+</tr>
+<tr>
+  <td><tt>['snapraid']['scheduler']['smtp_password']</tt></td>
+  <td>string</td>
+  <td>optional password for snapraid_runner to login to smtp server</td>
+  <td><tt>false</tt></td>
+</tr>
+<tr>
+  <td><tt>['snapraid']['scheduler']['scrub_after_sync']</tt></td>
+  <td>string</td>
+  <td>whether snapraid_runner will run scrub after each sync (recommended)</td>
+  <td><tt>false</tt></td>
+</tr>
+<tr>
+  <td><tt>['snapraid']['scheduler']['scrub_percentage']</tt></td>
+  <td>int</td>
+  <td>percentage of the protected data for snapraid_runner to scrub</td>
+  <td><tt>false</tt></td>
+</tr>
+<tr>
+  <td><tt>['snapraid']['scheduler']['scrub_older_than']</tt></td>
+  <td>int</td>
+  <td>files older than *x* days will be scrubbed</td>
+  <td><tt>false</tt></td>
+</tr>
 </table>
 
 # Recipes
