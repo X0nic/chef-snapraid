@@ -32,5 +32,5 @@ directory '/var/snapraid' do
   recursive true
 end
 
-template '/etc/snapraid/snapraid.conf' do
+template '/etc/snapraid.conf' do
 end
