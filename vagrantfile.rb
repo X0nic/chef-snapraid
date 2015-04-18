@@ -10,7 +10,7 @@ Vagrant.configure('2')  do |config|
                  '--portcount', 4
                 ]
 
-    # Create andttach disks to SATA controller
+    # Create and attach disks to SATA controller
     file_to_disk = [
       'tmp/disk1.vdi',
       'tmp/disk2.vdi',
@@ -18,7 +18,15 @@ Vagrant.configure('2')  do |config|
     ]
 
     file_to_disk.each_with_index do |disk_file, i|
+      # Delete the disk if it already exists
+      if  File.exist?(disk_file)
+        v.customize ['closemedium', 'disk', disk_file, '--delete']
+      end
+
+      # Create a fresh disk
       v.customize ['createhd', '--filename', disk_file, '--size', 500 * 1024]
+
+      # Attach the disk
       v.customize ['storageattach', :id,
                    '--storagectl', 'SATAController',
                    '--port', i,
