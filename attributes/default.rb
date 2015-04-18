@@ -12,7 +12,8 @@ default['snapraid']['exclude_list'] = [
   '.Spotlight-V100',
   '.TemporaryItems',
   '.Trashes',
-  '.AppleDB'
+  '.AppleDB',
+  'snapraid.content'
 ]
 default['snapraid']['data_disks'] = []
 default['snapraid']['parity_disks'] = []
