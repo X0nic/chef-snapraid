@@ -1,6 +1,9 @@
 ---
 driver:
   name: vagrant
+  vagrantfiles: 
+      - Vagrantfile.rb
+  pre_create_command: rm -rf {{vagrant_root}}/tmp
 
 provisioner:
   name: chef_solo
@@ -20,3 +23,12 @@ suites:
     run_list:
       - recipe[snapraid::default]
     attributes:
+      snapraid:
+        data_disks:
+          - '/media/disk1/'
+          - '/media/disk2/'
+        parity_disks:
+          - '/media/disk3/'
+        content_files:
+          - '/media/disk1/'
+          - '/media/disk2/'
