@@ -41,3 +41,4 @@ default['snapraid']['scheduler']['smtp_password'] = ''
 default['snapraid']['scheduler']['scrub_after_sync'] = 'true'
 default['snapraid']['scheduler']['scrub_percentage'] = 12
 default['snapraid']['scheduler']['scrub_older_than'] = 10
+default['snapraid']['scheduler']['deletion_abort_threshold'] = 40

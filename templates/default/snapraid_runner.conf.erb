@@ -4,7 +4,7 @@ executable = /usr/local/bin/snapraid
 ; path to the snapraid config to be used
 config = /etc/snapraid.conf
 ; abort operation if there are more deletes than this, set to -1 to disable
-deletethreshold = 40
+deletethreshold = <%=node['snapraid']['scheduler']['deletion_abort_threshold']%>
 
 [logging]
 ; logfile to write to, leave empty to disable

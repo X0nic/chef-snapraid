@@ -1,5 +1,6 @@
 # SnapRAID cookbook [![Cookbook Version](http://img.shields.io/cookbook/v/snapraid.svg)](https://supermarket.chef.io/cookbooks/snapraid) [![Build Status](https://travis-ci.org/X0nic/chef-snapraid.svg)](https://travis-ci.org/X0nic/chef-snapraid)
-This cookbook provides a default recipe to install and configure SnapRAID
+This cookbook provides a default recipe to install and configure SnapRAID.  
+Uses [Chronial's snapraid-runner](https://github.com/Chronial/snapraid-runner) as an optional cronjob.
 
 # Requirements
 ## Operating Systems
@@ -162,7 +163,7 @@ default_attributes(
 </tr>
 <tr>
   <td><tt>['snapraid']['scheduler']['scrub_after_sync']</tt></td>
-  <td>string</td>
+  <td>boolean</td>
   <td>whether snapraid_runner will run scrub after each sync (recommended)</td>
   <td><tt>false</tt></td>
 </tr>
@@ -176,6 +177,12 @@ default_attributes(
   <td><tt>['snapraid']['scheduler']['scrub_older_than']</tt></td>
   <td>int</td>
   <td>files older than *x* days will be scrubbed</td>
+  <td><tt>false</tt></td>
+</tr>
+<tr>
+  <td><tt>['snapraid']['scheduler']['deletion_abort_threshold']</tt></td>
+  <td>int</td>
+  <td>abort scheduled operation if there are more deletes than this, set to -1 to disable</td>
   <td><tt>false</tt></td>
 </tr>
 </table>

@@ -5,11 +5,16 @@ This file is used to list changes made in each version of the snapraid cookbook.
 
 0.3.0
 -----
+#### Features
 - Updated SnapRAID to 7.1
-- Parametrised SnapRAID version
-- Removed usage-specific defaults
+- Parameterised SnapRAID version
+- Added support for [Chronial's snapraid-runner](https://github.com/Chronial/snapraid-runner) as an optional cronjob
 
 #### Testing
 - Added functional testing with `snapraid sync`
 - Fixed CentOS tests
 - Added RuboCop and FoodCritic
+- Added ServerSpec tests to cover packages, files, and the cronjob
+
+#### Tidiness
+- Removed usage-specific defaults
