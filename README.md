@@ -12,6 +12,18 @@ This cookbook provides a default recipe to install and configure SnapRAID
 Add the SnapRAID cookbook to your runlist, and set the `data_disks`, `parity_disks`, and `content_files` attributes in accordance with the desired SnapRAID configuration.   
 See the [SnapRAID FAQ](http://snapraid.sourceforge.net/faq.html) for more details.
 
+## Example
+
+```
+default_attributes(  
+  'snapraid' => {  
+    'data_disks'=> ['/media/disk1/','/media/disk2/'],  
+    'parity_disks' => ['/media/disk3/'],  
+    'content_files' => ['/media/disk1/', '/media/disk1/']  
+  }  
+)
+```
+
 # Attributes
 #### snapraid::default
 <table>
@@ -77,4 +89,5 @@ Used to install and configure SnapRAID.
 
 # Author
 
-Author:: Nathan Lee(<nathan@globalphobia.com>)
+Author:: Nathan Lee (<nathan@globalphobia.com>)  
+Author:: Sam Martin (<samjackmartin@gmail.com>)

@@ -12,11 +12,12 @@ default['snapraid']['exclude_list'] = [
   '.Spotlight-V100',
   '.TemporaryItems',
   '.Trashes',
-  '.AppleDB'
+  '.AppleDB',
+  'snapraid.content'
 ]
-default['snapraid']['data_disks'] = ['/media/disk1', '/media/disk2', '/media/disk3', '/media/disk4']
-default['snapraid']['parity_disks'] = ['/media/p-disk1', '/media/p-disk2']
-default['snapraid']['content_files'] = ['/var/snapraid/content', '/var/disk1/content', '/var/disk2/content']
+default['snapraid']['data_disks'] = []
+default['snapraid']['parity_disks'] = []
+default['snapraid']['content_files'] = []
 
 # Version options
 default['snapraid']['version']['number'] = '7.1'
