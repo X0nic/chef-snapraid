@@ -21,6 +21,7 @@ suites:
   - name: default
     run_list:
       - recipe[snapraid::default]
+      - recipe[snapraid::scheduler]
     attributes:
       snapraid:
         data_disks:
