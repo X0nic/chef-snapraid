@@ -1,5 +1,7 @@
 #!/usr/bin/env rake
 
+require 'stove/rake_task'
+
 desc 'Run tests and rubocop'
 task default: [:rubocop, :foodcritic]
 
@@ -30,3 +32,5 @@ def prepare_foodcritic_sandbox(sandbox)
   cp_r Dir.glob("{#{files.join(',')}}"), sandbox
   puts "\n\n"
 end
+
+Stove::RakeTask.new
