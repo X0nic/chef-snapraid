@@ -1,4 +1,4 @@
-# SnapRAID cookbook [![Cookbook Version](http://img.shields.io/cookbook/v/snapraid.svg)](https://supermarket.chef.io/cookbooks/snapraid) [![Build Status](https://travis-ci.org/X0nic/chef-snapraid.svg)](https://travis-ci.org/X0nic/chef-snapraid)
+# SnapRAID cookbook [![GitHub license](https://img.shields.io/github/license/X0nic/chef-snapraid.svg)](https://github.com/X0nic/chef-snapraid/blob/master/LICENSE.md) [![Cookbook Version](http://img.shields.io/cookbook/v/snapraid.svg)](https://supermarket.chef.io/cookbooks/snapraid) [![Build Status](https://travis-ci.org/X0nic/chef-snapraid.svg)](https://travis-ci.org/X0nic/chef-snapraid)  
 This cookbook provides a default recipe to install and configure SnapRAID.  
 Uses [Chronial's snapraid-runner](https://github.com/Chronial/snapraid-runner) as an optional cronjob.
 
