@@ -20,13 +20,13 @@ default['snapraid']['parity_disks'] = []
 default['snapraid']['content_files'] = []
 
 # Version options
-default['snapraid']['version']['number'] = '7.1'
-default['snapraid']['version']['url'] = 'http://downloads.sourceforge.net/project/snapraid/snapraid-7.1.tar.gz'
+default['snapraid']['version']['number'] = '8.1'
+default['snapraid']['version']['url'] = 'http://downloads.sourceforge.net/project/snapraid/snapraid-8.1.tar.gz'
 # You will need to calculate the SHA-256 checksum yourself as SourceForge does not provide it
-default['snapraid']['version']['checksum'] = 'dd9005b6d7ea701e4aa0f854a0e34dabe68d7765b75f12fc6b3e1fda4d5c2cef'
+default['snapraid']['version']['checksum'] = '6bf89a1319ac3403958cd2c98a9c6102728c0070cfa1aedd90c4561d93c54e5d'
 
 # Scheduled Job Options
-default['snapraid']['scheduler']['script_url'] = 'https://raw.githubusercontent.com/Chronial/snapraid-runner/716d30bc5214baf3b6c6e90891298df375fb6047/snapraid-runner.py'
+default['snapraid']['scheduler']['script_url'] = 'https://raw.githubusercontent.com/Chronial/snapraid-runner/f6a25897412cd9849aee037891d60250d2212beb/snapraid-runner.py'
 default['snapraid']['scheduler']['script_directory'] = '/opt/snapraid-runner'
 default['snapraid']['scheduler']['config_file'] = '/etc/snapraid_runner.conf'
 default['snapraid']['scheduler']['execution_hour'] = 23

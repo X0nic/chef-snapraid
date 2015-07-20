@@ -13,6 +13,7 @@ Uses [Chronial's snapraid-runner](https://github.com/Chronial/snapraid-runner) a
 
 ## Packages
  * python
+
 # Usage
 Add the SnapRAID cookbook to your runlist, and set the `data_disks`, `parity_disks`, and `content_files` attributes in accordance with the desired SnapRAID configuration.   
 See the [SnapRAID FAQ](http://snapraid.sourceforge.net/faq.html) for more details.

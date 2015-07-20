@@ -3,6 +3,12 @@
 
 This file is used to list changes made in each version of the snapraid cookbook.
 
+0.3.1
+-----
+#### Features
+ - Updated SnapRAID to 8.1
+
+
 0.3.0
 -----
 #### Features
