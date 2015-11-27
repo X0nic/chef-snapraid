@@ -1,13 +1,18 @@
 #!/usr/bin/env rake
-
+require 'rspec/core/rake_task'
 require 'stove/rake_task'
 
 desc 'Run tests and rubocop'
-task default: [:rubocop, :foodcritic]
+task default: [:rubocop, :foodcritic, :chefspec]
 
 task :rubocop do
   require 'rubocop/rake_task'
   RuboCop::RakeTask.new
+end
+
+# Rspec and ChefSpec
+task :chefspec do
+  RSpec::Core::RakeTask.new(:chefspec)
 end
 
 task :foodcritic do
