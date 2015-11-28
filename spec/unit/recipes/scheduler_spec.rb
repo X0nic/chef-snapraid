@@ -45,7 +45,7 @@ describe 'snapraid::scheduler' do
     let(:chef_run) do
       runner = ChefSpec::SoloRunner.new(platform: 'windows', version: '2012R2') do |node|
         node.set['snapraid']['scheduler']['script_directory'] = 'C:\snapraid_runner'
-        node.set['snapraid']['scheduler']['config_file'] = 'C:\snapraid_runner\snapraid_runner.conf'
+        node.set['snapraid']['scheduler']['config_file'] = 'C:\snapraid_runner/snapraid_runner.conf'
         node.set['snapraid']['scheduler']['deletion_abort_threshold'] = '3'
         node.set['snapraid']['scheduler']['scrub_after_sync'] = 'false'
         node.set['snapraid']['scheduler']['scrub_percentage'] = '100'
@@ -68,8 +68,8 @@ describe 'snapraid::scheduler' do
     end
 
     it 'creates the correct configuration file' do
-      expect(chef_run).to create_template('C:\snapraid_runner\snapraid_runner.conf')
-      expect(chef_run).to render_file('C:\snapraid_runner\snapraid_runner.conf').with_content(/
+      expect(chef_run).to create_template('C:\snapraid_runner/snapraid_runner.conf')
+      expect(chef_run).to render_file('C:\snapraid_runner/snapraid_runner.conf').with_content(/
         .*deletethreshold\s=\s3/x).with_content(/
         .*enabled\s=\sfalse.*/x).with_content(/
         .*percentage\s=\s100.*/x).with_content(/
