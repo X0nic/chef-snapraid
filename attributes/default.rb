@@ -29,9 +29,9 @@ if node['platform'] == 'windows'
   default['snapraid']['config_directory'] = "#{ENV['PROGRAMDATA']}\\SnapRaid"
   default['snapraid']['service_account'] = 'SYSTEM'
 else
-  default['snapraid']['version']['url'] = 'http://downloads.sourceforge.net/project/snapraid/snapraid-8.1.tar.gz'
+  default['snapraid']['version']['url'] = 'https://github.com/amadvance/snapraid/releases/download/v9.1/snapraid-9.1.tar.gz'
   # You will need to calculate the SHA-256 checksum yourself as GitHub does not provide it
-  default['snapraid']['version']['checksum'] = '6bf89a1319ac3403958cd2c98a9c6102728c0070cfa1aedd90c4561d93c54e5d'
+  default['snapraid']['version']['checksum'] = '397fdd7709e941e372b37025457794f8b0ce63a5a8455703ad17770cbccd3823'
   default['snapraid']['install_directory'] = '/etc/snapraid'
   default['snapraid']['config_directory'] = '/etc'
   default['snapraid']['service_account'] = 'root'

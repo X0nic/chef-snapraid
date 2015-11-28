@@ -3,6 +3,10 @@
 
 This file is used to list changes made in each version of the snapraid cookbook.
 
+0.4.0
+-----
+Added Windows Support, upgraded default to SnapRAID v9.1  
+
 0.3.1
 -----
 #### Features
