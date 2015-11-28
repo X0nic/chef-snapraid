@@ -24,7 +24,7 @@ default['snapraid']['version']['number'] = '8.1'
 if node['platform'] == 'windows'
   default['snapraid']['version']['url'] = 'https://github.com/amadvance/snapraid/releases/download/v9.1/snapraid-9.1-windows-x64.zip'
   # You will need to calculate the SHA-256 checksum yourself as GitHub does not provide it
-  default['snapraid']['version']['checksum'] = '1B0FEFF7F7D8C95D10E2911DC9790A1FE08C81A9'
+  default['snapraid']['version']['checksum'] = '4c56b2c5d556a3685239e444cb58ce84c398e86a173be34ff7cfa3a2b31a5b34'
   default['snapraid']['install_directory'] = "#{ENV['SystemDrive']}\\SnapRaid"
   default['snapraid']['config_directory'] = "#{ENV['LOCALAPPDATA']}\\SnapRaid"
   default['snapraid']['service_account'] = 'SYSTEM'

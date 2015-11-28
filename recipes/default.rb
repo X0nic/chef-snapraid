@@ -8,21 +8,16 @@
 #
 include_recipe 'ark::default'
 
-template "#{node['snapraid']['config_directory']}/snapraid.conf" do
-end
-
 if node['platform_family'] == 'windows'
 
   # Ensure the right owner and mode for snapraid install dir
   directory node['snapraid']['config_directory'] do
-    owner node['snapraid']['service_account']
-    mode '0755'
+    rights :full_control, node['snapraid']['service_account']
     recursive true
   end
 
   directory node['snapraid']['install_directory'] do
-    owner node['snapraid']['service_account']
-    mode '0755'
+    rights :full_control, node['snapraid']['service_account']
     recursive true
   end
 
@@ -39,6 +34,7 @@ if node['platform_family'] == 'windows'
   # Unzip snapraid
   Chef::Log.info("Extracting snapraid to #{node['snapraid']['install_directory']}")
   windows_zipfile node['snapraid']['install_directory'] do
+    source snapraid_zip_file_location
     action :nothing
   end
 else
@@ -50,4 +46,7 @@ else
     checksum node['snapraid']['version']['checksum']
     action [:install_with_make]
   end
+end
+
+template "#{node['snapraid']['config_directory']}/snapraid.conf" do
 end
