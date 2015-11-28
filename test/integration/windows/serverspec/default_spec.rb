@@ -18,6 +18,7 @@ files.each do |file|
 end
 
 # Check SnapRAID runs!
-describe exec('C:\SnapRaid\snapraid.exe -c C:\ProgramData\SnapRaid\snapraid.conf sync') do  
-  its(:stdout) { should match /.*"Everything OK".*/}
+describe exec('C:\SnapRaid\snapraid.exe -c C:\ProgramData\SnapRaid\snapraid.conf sync') do
+  everything_ok = /Everything OK/
+  its(:stdout) { should match everything_ok }
 end
