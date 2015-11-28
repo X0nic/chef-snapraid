@@ -21,16 +21,39 @@ default['snapraid']['content_files'] = []
 
 # Version options
 default['snapraid']['version']['number'] = '8.1'
-default['snapraid']['version']['url'] = 'http://downloads.sourceforge.net/project/snapraid/snapraid-8.1.tar.gz'
-# You will need to calculate the SHA-256 checksum yourself as SourceForge does not provide it
-default['snapraid']['version']['checksum'] = '6bf89a1319ac3403958cd2c98a9c6102728c0070cfa1aedd90c4561d93c54e5d'
+if node['platform'] == 'windows'
+  default['snapraid']['version']['url'] = 'https://github.com/amadvance/snapraid/releases/download/v9.1/snapraid-9.1-windows-x64.zip'
+  # You will need to calculate the SHA-256 checksum yourself as GitHub does not provide it
+  default['snapraid']['version']['checksum'] = '1B0FEFF7F7D8C95D10E2911DC9790A1FE08C81A9'
+  default['snapraid']['install_directory'] = "#{ENV['SystemDrive']}\\SnapRaid"
+  default['snapraid']['config_directory'] = "#{ENV['LOCALAPPDATA']}\\SnapRaid"
+  default['snapraid']['service_account'] = 'SYSTEM'
+else
+  default['snapraid']['version']['url'] = 'http://downloads.sourceforge.net/project/snapraid/snapraid-8.1.tar.gz'
+  # You will need to calculate the SHA-256 checksum yourself as GitHub does not provide it
+  default['snapraid']['version']['checksum'] = '6bf89a1319ac3403958cd2c98a9c6102728c0070cfa1aedd90c4561d93c54e5d'
+  default['snapraid']['config_directory'] = '/etc'
+  default['snapraid']['service_account'] = 'root'
+end
 
 # Scheduled Job Options
+if node['platform'] == 'windows'
+  default['snapraid']['scheduler']['python_url'] = 'https://www.python.org/ftp/python/2.7.10/python-2.7.10.amd64.msi'
+  default['snapraid']['scheduler']['script_directory'] = "#{ENV['SystemDrive']}\\SnapRaid"
+  default['snapraid']['scheduler']['config_file'] = "#{ENV['LOCALAPPDATA']}\\SnapRaid\\snapraid_runner.conf"
+  default['snapraid']['scheduler']['execution_frequency'] = :daily
+  default['snapraid']['scheduler']['execution_frequency_modifier '] = 1
+  default['snapraid']['scheduler']['start_time'] = '23:59'
+  default['snapraid']['scheduler']['log_directory'] = "#{ENV['TEMP']}\\"
+else
+  default['snapraid']['scheduler']['script_directory'] = '/opt/snapraid-runner'
+  default['snapraid']['scheduler']['config_file'] = '/etc/snapraid_runner.conf'
+  default['snapraid']['scheduler']['execution_hour'] = 23
+  default['snapraid']['scheduler']['execution_minute'] = 59
+  default['snapraid']['scheduler']['log_directory'] = '/var/log'
+end
+
 default['snapraid']['scheduler']['script_url'] = 'https://raw.githubusercontent.com/Chronial/snapraid-runner/f6a25897412cd9849aee037891d60250d2212beb/snapraid-runner.py'
-default['snapraid']['scheduler']['script_directory'] = '/opt/snapraid-runner'
-default['snapraid']['scheduler']['config_file'] = '/etc/snapraid_runner.conf'
-default['snapraid']['scheduler']['execution_hour'] = 23
-default['snapraid']['scheduler']['execution_minute'] = 59
 default['snapraid']['scheduler']['email_from'] = ''
 default['snapraid']['scheduler']['email_to'] = ''
 default['snapraid']['scheduler']['smtp_host'] = ''

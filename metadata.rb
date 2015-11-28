@@ -9,3 +9,4 @@ supports         'ubuntu'
 supports         'centos'
 
 depends          'ark'
+depends 		 'windows'
