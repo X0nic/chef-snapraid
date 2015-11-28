@@ -44,12 +44,12 @@ suites:
     attributes:
       snapraid:
         data_disks:
-          - '/media/disk1/'
-          - '/media/disk2/'
+          - 'D:\'
+          - 'E:\'
         parity_disks:
-          - '/media/disk3/'
+          - 'F:\'
         content_files:
-          - '/media/disk1/'
-          - '/media/disk2/'
+          - 'D:\'
+          - 'E:\'
     includes:
       - windows-2012r2

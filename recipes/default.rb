@@ -36,6 +36,7 @@ if node['platform_family'] == 'windows'
   Chef::Log.info("Extracting snapraid to #{node['snapraid']['install_directory']}")
   windows_zipfile node['snapraid']['install_directory'] do
     source snapraid_zip_file_location
+    overwrite true
     action :nothing
   end
 else
