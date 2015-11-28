@@ -31,7 +31,7 @@ describe 'snapraid::default' do
   context 'On Windows 2012R2' do
     let(:chef_run) do
       runner = ChefSpec::SoloRunner.new(platform: 'windows',
-                                        version: '2012r2',
+                                        version: '2012R2',
                                         file_cache_path: 'C:\chef\cache') do |node|
         node.set['snapraid']['content_files'] = ['D:\\']
         node.set['snapraid']['parity_disks'] = ['D:\\']
