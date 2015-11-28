@@ -29,6 +29,7 @@ if node['platform_family'] == 'windows'
     source node['snapraid']['version']['url']
     notifies :unzip, "windows_zipfile[#{node['snapraid']['install_directory']}]", :immediately
     checksum node['snapraid']['version']['checksum']
+    action :create
   end
 
   # Unzip snapraid

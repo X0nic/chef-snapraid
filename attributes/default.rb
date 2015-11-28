@@ -26,7 +26,7 @@ if node['platform'] == 'windows'
   # You will need to calculate the SHA-256 checksum yourself as GitHub does not provide it
   default['snapraid']['version']['checksum'] = '4c56b2c5d556a3685239e444cb58ce84c398e86a173be34ff7cfa3a2b31a5b34'
   default['snapraid']['install_directory'] = "#{ENV['SystemDrive']}\\SnapRaid"
-  default['snapraid']['config_directory'] = "#{ENV['LOCALAPPDATA']}\\SnapRaid"
+  default['snapraid']['config_directory'] = "#{ENV['PROGRAMDATA']}\\SnapRaid"
   default['snapraid']['service_account'] = 'SYSTEM'
 else
   default['snapraid']['version']['url'] = 'http://downloads.sourceforge.net/project/snapraid/snapraid-8.1.tar.gz'
@@ -40,7 +40,7 @@ end
 if node['platform'] == 'windows'
   default['snapraid']['scheduler']['python_url'] = 'https://www.python.org/ftp/python/2.7.10/python-2.7.10.amd64.msi'
   default['snapraid']['scheduler']['script_directory'] = "#{ENV['SystemDrive']}\\SnapRaid"
-  default['snapraid']['scheduler']['config_file'] = "#{ENV['LOCALAPPDATA']}\\SnapRaid\\snapraid_runner.conf"
+  default['snapraid']['scheduler']['config_file'] = "#{ENV['PROGRAMDATA']}\\SnapRaid\\snapraid_runner.conf"
   default['snapraid']['scheduler']['execution_frequency'] = :daily
   default['snapraid']['scheduler']['execution_frequency_modifier '] = 1
   default['snapraid']['scheduler']['start_time'] = '23:59'

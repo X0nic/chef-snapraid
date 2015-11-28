@@ -322,7 +322,7 @@ PLATFORMS
 
 DEPENDENCIES
   berkshelf
-  chefspec
+  chefspec (>= 4.4.0)
   foodcritic
   kitchen-vagrant
   rake

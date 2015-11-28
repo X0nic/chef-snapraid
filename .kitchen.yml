@@ -16,6 +16,9 @@ platforms:
       - recipe[apt]
   - name: centos-6.6
   - name: centos-7.0
+  - name: windows-2012r2
+    driver:
+      box: kensykora/windows_2012_r2_standard
 
 suites:
   - name: default
@@ -32,3 +35,21 @@ suites:
         content_files:
           - '/media/disk1/'
           - '/media/disk2/'
+    excludes:
+      - windows-2012r2
+  - name: windows
+    run_list:
+      - recipe[snapraid::default]
+      - recipe[snapraid::scheduler]
+    attributes:
+      snapraid:
+        data_disks:
+          - '/media/disk1/'
+          - '/media/disk2/'
+        parity_disks:
+          - '/media/disk3/'
+        content_files:
+          - '/media/disk1/'
+          - '/media/disk2/'
+    includes:
+      - windows-2012r2
