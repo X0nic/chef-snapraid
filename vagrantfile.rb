@@ -1,5 +1,5 @@
 
-Vagrant.configure('2')  do |config|
+Vagrant.configure('2') do |config|
   # Add additional hard disks for functional testing
   config.vm.provider 'virtualbox' do |v|
     # Attach SATA controller for ease of setup
@@ -19,7 +19,7 @@ Vagrant.configure('2')  do |config|
 
     file_to_disk.each_with_index do |disk_file, i|
       # Delete the disk if it already exists
-      if  File.exist?(disk_file)
+      if File.exist?(disk_file)
         v.customize ['closemedium', 'disk', disk_file, '--delete']
       end
 
