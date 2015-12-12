@@ -45,6 +45,7 @@ describe 'snapraid::scheduler' do
   context 'On Windows 2012R2' do
     let(:chef_run) do
       runner = ChefSpec::SoloRunner.new(platform: 'windows', version: '2012R2') do |node|
+        node.set['snapraid']['install_directory'] = 'C:\SnapRaid'
         node.set['snapraid']['scheduler']['script_directory'] = 'C:\snapraid_runner'
         node.set['snapraid']['scheduler']['config_file'] = 'C:\snapraid_runner/snapraid_runner.conf'
         node.set['snapraid']['scheduler']['deletion_abort_threshold'] = '3'
