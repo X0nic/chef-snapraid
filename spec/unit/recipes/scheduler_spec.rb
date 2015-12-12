@@ -29,11 +29,12 @@ describe 'snapraid::scheduler' do
 
     it 'creates the correct configuration file' do
       expect(chef_run).to create_template('/opt/script_directory/snapraid_runner.conf')
-      expect(chef_run).to render_file('/opt/script_directory/snapraid_runner.conf').with_content(/
-        .*deletethreshold\s=\s3/x).with_content(/
-        .*enabled\s=\sfalse.*/x).with_content(/
-        .*percentage\s=\s100.*/x).with_content(/
-        .*older-than\s=\s5.*/x)
+      expect(chef_run).to render_file('/opt/script_directory/snapraid_runner.conf').with_content { |content|
+        expect(content).to match(/deletethreshold = 3/)
+        expect(content).to match(/enabled = false/)
+        expect(content).to match(/percentage = 100/)
+        expect(content).to match(/older-than = 5/)
+      }
     end
 
     it 'creates cron job' do
@@ -69,11 +70,13 @@ describe 'snapraid::scheduler' do
 
     it 'creates the correct configuration file' do
       expect(chef_run).to create_template('C:\snapraid_runner/snapraid_runner.conf')
-      expect(chef_run).to render_file('C:\snapraid_runner/snapraid_runner.conf').with_content(/
-        .*deletethreshold\s=\s3/x).with_content(/
-        .*enabled\s=\sfalse.*/x).with_content(/
-        .*percentage\s=\s100.*/x).with_content(/
-        .*older-than\s=\s5.*/x)
+      expect(chef_run).to render_file('C:\snapraid_runner/snapraid_runner.conf').with_content { |content|
+        expect(content).to match(/executable = C:\\SnapRaid\\snapraid.exe/)
+        expect(content).to match(/deletethreshold = 3/)
+        expect(content).to match(/enabled = false/)
+        expect(content).to match(/percentage = 100/)
+        expect(content).to match(/older-than = 5/)
+      }
     end
 
     it 'creates scheduld task' do

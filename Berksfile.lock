@@ -1,5 +1,6 @@
 DEPENDENCIES
   apt
+  ark
   snapraid
     path: .
     metadata: true

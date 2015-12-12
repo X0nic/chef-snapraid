@@ -19,12 +19,12 @@ describe 'snapraid::default' do
 
     it 'creates the correct configuration file' do
       expect(chef_run).to create_template('/etc/snapraid.conf')
-      expect(chef_run).to render_file('/etc/snapraid.conf').with_content(%r{
-        .*parity\s/mnt/virtual/snapraid.parity.*}x).with_content(%r{
-        content\s/mnt/virtual/snapraid.content.*}x).with_content(%r{
-        disk\sd1\s/mnt/virtual.*}x)
-        .with_content(/
-        block_size\s512.*/x)
+      expect(chef_run).to render_file('/etc/snapraid.conf').with_content { |content|
+        expect(content).to match(%r{parity /mnt/virtual/snapraid.parity})
+        expect(content).to match(%r{content /mnt/virtual/snapraid.content})
+        expect(content).to match(%r{disk d1 /mnt/virtual})
+        expect(content).to match(/block_size 512/)
+      }
     end
   end
 
@@ -62,12 +62,12 @@ describe 'snapraid::default' do
 
     it 'creates the correct configuration file' do
       expect(chef_run).to create_template('D:\SnapRaid\Config/snapraid.conf')
-      expect(chef_run).to render_file('D:\SnapRaid\Config/snapraid.conf').with_content(/
-        .*parity\sD:\\snapraid.parity.*/x).with_content(/
-        content\sD:\\snapraid.content.*/x).with_content(/
-        disk\sd1\sD:\\.*/x)
-        .with_content(/
-        block_size\s512.*/x)
+      expect(chef_run).to render_file('D:\SnapRaid\Config/snapraid.conf').with_content { |content|
+        expect(content).to match(/parity D:\\\\snapraid.parity/)
+        expect(content).to match(/content D:\\\\snapraid.content/)
+        expect(content).to match(/disk d1 D:\\/)
+        expect(content).to match(/block_size 512/)
+      }
     end
   end
 end

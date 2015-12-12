@@ -1,5 +1,21 @@
-# Install Python
-if node['platform'] == 'windows'
+# Create the directory for snapraid-runner
+directory node['snapraid']['scheduler']['script_directory'] do
+  action :create
+end
+
+# Install the script
+remote_file "#{node['snapraid']['scheduler']['script_directory']}/snapraid-runner.py" do
+  source node['snapraid']['scheduler']['script_url']
+end
+
+# Configure the script's config file
+template node['snapraid']['scheduler']['config_file'] do
+end
+
+#
+# Install Python & configure scheduled task (Windows)
+#
+if platform?('windows')
   windows_package 'python2.7' do
     source node['snapraid']['scheduler']['python_url']
   end
@@ -15,7 +31,12 @@ if node['platform'] == 'windows'
     start_time node['snapraid']['scheduler']['start_time']
     action :create
   end
-else
+end
+
+#
+# Install Python & configure cron (Linux)
+#
+unless platform?('windows')
   package 'python'
 
   # Setup our cronjob
@@ -26,18 +47,4 @@ else
       "-c #{node['snapraid']['scheduler']['config_file']}"
     user node['snapraid']['service_account']
   end
-end
-
-# Create the directory for snapraid-runner
-directory node['snapraid']['scheduler']['script_directory'] do
-  action :create
-end
-
-# Install the script
-remote_file "#{node['snapraid']['scheduler']['script_directory']}/snapraid-runner.py" do
-  source node['snapraid']['scheduler']['script_url']
-end
-
-# Configure the script's config file
-template node['snapraid']['scheduler']['config_file'] do
 end
