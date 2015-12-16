@@ -1,5 +1,6 @@
 DEPENDENCIES
   apt
+  ark
   snapraid
     path: .
     metadata: true
@@ -12,7 +13,8 @@ GRAPH
     7-zip (>= 0.0.0)
     windows (>= 0.0.0)
   chef_handler (1.2.0)
-  snapraid (0.3.1)
+  snapraid (0.4.0)
     ark (>= 0.0.0)
+    windows (>= 0.0.0)
   windows (1.38.4)
     chef_handler (>= 0.0.0)

@@ -7,30 +7,18 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe 'ark::default'
+#
+# Install SnapRaid for Windows
+#
+include_recipe 'snapraid::snapraid_windows' if platform?('windows')
 
-# Download and build the selected version of SnapRaid
-ark 'snapraid' do
-  url node['snapraid']['version']['url']
-  version node['snapraid']['version']['number']
-  checksum node['snapraid']['version']['checksum']
-  action [:install_with_make]
-end
+#
+#  Install SnapRAID for Linux
+#
+include_recipe 'snapraid::snapraid_linux' unless platform?('windows')
 
-# Ensure the right owner and mode for snapraid install dir
-directory '/etc/snapraid' do
-  owner 'root'
-  group 'root'
-  mode '0755'
-  recursive true
-end
-
-directory '/var/snapraid' do
-  owner 'root'
-  group 'root'
-  mode '0755'
-  recursive true
-end
-
-template '/etc/snapraid.conf' do
+#
+# Configure SnapRAID
+#
+template "#{node['snapraid']['config_directory']}/snapraid.conf" do
 end

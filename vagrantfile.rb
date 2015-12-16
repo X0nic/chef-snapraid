@@ -4,9 +4,9 @@ Vagrant.configure('2') do |config|
   config.vm.provider 'virtualbox' do |v|
     # Attach SATA controller for ease of setup
     v.customize ['storagectl', :id,
-                 '--name', 'SATAController',
-                 '--add', 'sata',
-                 '--controller', 'IntelAhci',
+                 '--name', 'SASController',
+                 '--add', 'sas',
+                 '--controller', 'LSILogicSAS',
                  '--portcount', 4
                 ]
 
@@ -28,7 +28,7 @@ Vagrant.configure('2') do |config|
 
       # Attach the disk
       v.customize ['storageattach', :id,
-                   '--storagectl', 'SATAController',
+                   '--storagectl', 'SASController',
                    '--port', i,
                    '--device', 0,
                    '--type', 'hdd',
